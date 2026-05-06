@@ -1,0 +1,149 @@
+/*I Used Tailwind cus its easier to get a working version and has alot of premade classes*/
+@import "tailwindcss";
+
+:root {
+    --brand: #f43f5e;
+    --brand-hover: #e11d48;
+    --surface-900: #000000;
+    --surface-800: #0a0a0a;
+    --surface-700: #141414;
+    --glass-bg: rgba(0, 0, 0, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --text-base: #f3f4f6;
+    --text-muted: #888888;
+}
+
+@theme {
+    --font-heading: "Space Grotesk", sans-serif;
+    --color-brand: var(--brand);
+    --color-surface-600: #222222;
+    --color-surface-700: #141414;
+    --color-surface-800: #0a0a0a;
+    --color-surface-900: #000000;
+}
+
+body {
+    background-color: #000000;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(244, 63, 94, 0.05) 0px, transparent 40%),
+        radial-gradient(
+            at 100% 100%,
+            rgba(255, 255, 255, 0.01) 0px,
+            transparent 40%
+        );
+    color: var(--text-base);
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+* {
+    transition:
+        background-color 0.4s cubic-bezier(0.2, 0, 0, 1),
+        border-color 0.4s cubic-bezier(0.2, 0, 0, 1),
+        color 0.4s cubic-bezier(0.2, 0, 0, 1),
+        transform 0.4s cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.verse-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(244, 63, 94, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.1);
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.liquid-sidebar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(-85%);
+    height: auto;
+    padding: 1rem;
+    border-radius: 0 2rem 2rem 0;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(32px);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.liquid-sidebar:hover {
+    transform: translateY(-50%) translateX(0);
+}
+
+.sidebar-toggle-hint {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 60px;
+    background: var(--brand);
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-scroll > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 400px;
+}
+
+@media (max-width: 640px) {
+    .horizontal-scroll > * {
+        width: 85vw;
+    }
+}
